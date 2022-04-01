@@ -12,15 +12,20 @@ namespace xadrez_console
         {
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                //Tabuleiro tab = new Tabuleiro(8, 8);
 
-                tab.ColocarPeca(new Rei(tab, Cor.Preto), new Posicao(0, 2));
-                tab.ColocarPeca(new Torre(tab, Cor.Preto), new Posicao(1, 5));
-                tab.ColocarPeca(new Torre(tab,  Cor.Preto), new Posicao(1, 9));
+                //tab.ColocarPeca(new Rei(tab, Cor.Preto), new Posicao(0, 2));
+                //tab.ColocarPeca(new Torre(tab, Cor.Preto), new Posicao(1, 5));
+                //tab.ColocarPeca(new Torre(tab,  Cor.Preto), new Posicao(1, 9));
 
-                Tela.ImprimirTabuleiro(tab);
+                //Tela.ImprimirTabuleiro(tab);
 
-                Console.ReadLine();
+                //Console.ReadLine();
+
+                PosicaoXadrez pos = new('a', 1);
+
+                Console.WriteLine(pos);
+                Console.WriteLine(pos.ToPosicao());
 
             }catch(TabuleiroException e)
             {
