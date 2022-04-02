@@ -1,6 +1,7 @@
 ﻿using System;
 using xadrez_console.tabuleiro;
 using xadrez_console.tabuleiro.Enums;
+using xadrez_console.xadrez;
 
 namespace xadrez_console
 {
@@ -25,7 +26,7 @@ namespace xadrez_console
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine(" a b c d e f g h");
+            Console.WriteLine("  a b c d e f g h");
         }
 
         private static void ImprimirPeca(Peca peca)
@@ -41,6 +42,16 @@ namespace xadrez_console
                 Console.Write(peca);
                 Console.ForegroundColor = aux;
             }
+        }
+
+        public static PosicaoXadrez LerPosicaoXadrez()
+        {
+            string s = Console.ReadLine();
+
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+
+            return new PosicaoXadrez(coluna, linha);
         }
     }
 }
