@@ -25,15 +25,49 @@ namespace xadrez_console.xadrez
             ColocarPecas();
         }
 
-        public void ExecutarMovimento(Posicao origem, Posicao destino)
+        private void ExecutarMovimento(Posicao origem, Posicao destino)
         {
             Peca p = Tab.RetirarPeca(origem);
             p.IncrimentarQtdeMovimento();
             Peca pecaCapturada = Tab.RetirarPeca(destino);
-            Tab.ColocarPeca(p, destino);
+            Tab.ColocarPeca(p, destino);                        
+        }
 
+        public void RelizarJogada(Posicao origem, Posicao destino)
+        {
+            ExecutarMovimento(origem, destino);
             Turno++;
+            MudarJogador();
+        }
 
+        public void ValidarPosicaoDeOrigem(Posicao pos)
+        {
+            if (Tab.Peca(pos) == null)
+            {
+                throw new TabuleiroException("Não existe peça na posição de origem da escolhida!");
+            }
+
+            if (JogadorAtual != Tab.Peca(pos).Cor)
+            {
+                throw new TabuleiroException("A peça de origem escolhida não é sua!");
+            }
+
+            if (!Tab.Peca(pos).ValidarSeExisteMovimentosPossiveis())
+            {
+                throw new TabuleiroException("Não há movimentos possíveis para a peça de origem escolhida!");
+            }
+        }
+
+        public void ValidaPosicaoDeDestino(Posicao origem, Posicao destino)
+        {
+            if (!Tab.Peca(origem).PermiteMoverPara(destino))
+            {
+                throw new TabuleiroException("Posição de destino inválida!");
+            }
+        }
+
+        private void MudarJogador()
+        {
             if (JogadorAtual == Cor.Branca)
             {
                 JogadorAtual = Cor.Preto;

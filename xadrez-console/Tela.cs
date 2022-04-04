@@ -75,6 +75,16 @@ namespace xadrez_console
         {
             string s = Console.ReadLine();
 
+            if (s.Length == 0)
+            {
+                throw new TabuleiroException("Não foi informada a posição da jogada a ser realizada!");
+            }
+
+            if (s.Length == 1 || s.Length >= 3)
+            {
+                throw new TabuleiroException("A posição informada é inválida!");
+            }
+
             char coluna = s[0];
             int linha = int.Parse(s[1] + "");
 
