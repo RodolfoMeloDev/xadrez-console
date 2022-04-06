@@ -73,7 +73,7 @@ namespace xadrez_console.xadrez
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            // direita branca
+            // direita preta
             pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
             if (Tab.PosicaoValida(pos) && PodeMoverAdjacente(pos) && Cor == Cor.Preto)
             {
